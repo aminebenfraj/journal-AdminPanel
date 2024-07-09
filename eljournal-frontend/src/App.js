@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import CreateAuthor from './pages/author/CreateAuthor';
 import GetAuthors from './pages/author/GetAuthors';
 import EditAuthor from './pages/author/EditAuthor';
+import CreateCategory from './pages/category/CreatCategory';
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
             <Route path="/createauthor" element={<CreateAuthor />} />
             <Route path="/getauthor" element={<GetAuthors />} />
             <Route path="/editauthor/:id" element={<EditAuthor />} />
+            <Route path="/createcategory" element={<CreateCategory />} />
+
           </Routes>
         </div>
       </div>
