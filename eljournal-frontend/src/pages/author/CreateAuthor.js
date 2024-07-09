@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { baseURL } from '../utils/constant';
+import { baseURL } from '../../utils/constant';
 
 export default function CreateAuthor() {
     const navigate = useNavigate();

@@ -23,7 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('authors', AuthorController::class);
-Route::apiResource('articles', ArticleController::class);
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('sources', SourceController::class);
 Route::apiResource('tags', TagController::class);

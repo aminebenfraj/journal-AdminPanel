@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Sidebar from './components/Sidebar';
-import CreateAuthor from './pages/CreateAuthor';
-import GetAuthors from './pages/GetAuthors';
+import CreateAuthor from './pages/author/CreateAuthor';
+import GetAuthors from './pages/author/GetAuthors';
+import EditAuthor from './pages/author/EditAuthor';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             {/* <Route path="/" element={<Home />} /> */}
             <Route path="/createauthor" element={<CreateAuthor />} />
             <Route path="/getauthor" element={<GetAuthors />} />
+            <Route path="/editauthor/:id" element={<EditAuthor />} />
           </Routes>
         </div>
       </div>

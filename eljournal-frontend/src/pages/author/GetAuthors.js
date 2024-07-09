@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FaUserTie } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { baseURL } from '../utils/constant';
+import { baseURL } from '../../utils/constant';
 
 export default function AuthorsPage() {
     const navigate = useNavigate();
@@ -21,6 +21,17 @@ export default function AuthorsPage() {
 
         fetchAuthors();
     }, []);
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`${baseURL}/authors/${id}`);
+            // After deleting, fetch updated list of authors
+            const response = await axios.get(`${baseURL}/authors`);
+            setAuthors(response.data);
+        } catch (error) {
+            console.error('Error deleting author:', error);
+        }
+    };
 
     return (
         <main className="bg-gray-100 min-h-screen">
@@ -55,10 +66,22 @@ export default function AuthorsPage() {
                                         <td className="px-4 py-2">
                                             <Link
                                                 to={`/authors/${author.id}`}
-                                                className="text-blue-600 hover:text-blue-800 font-medium"
+                                                className="text-blue-600 hover:text-blue-800 font-medium mr-4"
                                             >
                                                 View
                                             </Link>
+                                            <button
+                                                onClick={() => handleDelete(author.id)}
+                                                className="text-red-600 hover:text-red-800 font-medium mr-4"
+                                            >
+                                                Delete
+                                            </button>
+                                            <button
+                                                onClick={() => navigate(`/editauthor/${author.id}`)}
+                                                className="text-green-600 hover:text-green-800 font-medium"
+                                            >
+                                                Edit
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
