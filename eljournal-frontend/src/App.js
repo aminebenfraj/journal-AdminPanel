@@ -5,6 +5,7 @@ import CreateAuthor from './pages/author/CreateAuthor';
 import GetAuthors from './pages/author/GetAuthors';
 import EditAuthor from './pages/author/EditAuthor';
 import CreateCategory from './pages/category/CreatCategory';
+import GetCategory from './pages/category/GetCategory';
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
             <Route path="/getauthor" element={<GetAuthors />} />
             <Route path="/editauthor/:id" element={<EditAuthor />} />
             <Route path="/createcategory" element={<CreateCategory />} />
+            <Route path="/getcategory" element={<GetCategory />} />
+            
 
           </Routes>
         </div>
