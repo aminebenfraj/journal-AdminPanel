@@ -7,6 +7,9 @@ import EditAuthor from './pages/author/EditAuthor';
 import CreateCategory from './pages/category/CreatCategory';
 import GetCategory from './pages/category/GetCategory';
 import EditCategory from './pages/category/EditCategory';
+import CreateSource from './pages/source/CreateSource';
+import GetSource from './pages/source/GetSource';
+import EditSource from './pages/source/EditSource';
 
 
 function App() {
@@ -23,6 +26,9 @@ function App() {
             <Route path="/createcategory" element={<CreateCategory />} />
             <Route path="/getcategory" element={<GetCategory />} />
             <Route path="/editcategory/:id" element={<EditCategory />} />
+            <Route path="/createsource" element={<CreateSource />} />
+            <Route path="/getSource" element={<GetSource />} />
+            <Route path="/editSource/:id" element={<EditSource />} />
 
 
           </Routes>

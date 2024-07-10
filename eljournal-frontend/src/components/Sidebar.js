@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FaUser, FaCog, FaSignOutAlt, FaNewspaper, FaListAlt, FaFile, FaTags, FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import { FaUser, FaHome, FaCog, FaSignOutAlt, FaNewspaper, FaListAlt, FaFile, FaTags, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { baseURL } from '../utils/constant';
 
 const Sidebar = () => {
@@ -41,6 +41,12 @@ const Sidebar = () => {
                     {/* Sidebar sections with dropdowns */}
                     {/* Example sections: Authors, Articles, Categories, Sources, Tags, Users */}
                     <li className="opcion-con-desplegable">
+                        <li>
+                            <a href="/#" className="block p-2 hover:bg-gray-700 flex items-center">
+                                <FaHome className="mr-2" />
+                                Home
+                            </a>
+                        </li>
                         {/* Authors Section */}
                         <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('author')}>
                             <div className="flex items-center">
@@ -133,13 +139,13 @@ const Sidebar = () => {
                         <ul className={`desplegable ml-4 ${openSections['source'] ? '' : 'hidden'}`}>
                             {/* Submenu items for Sources */}
                             <li>
-                                <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
+                                <a href="/createsource" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
                                     Create Source
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
+                                <a href="/getsource" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
                                     Show Source
                                 </a>
