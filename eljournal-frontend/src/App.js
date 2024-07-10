@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <div className="flex">
         <Sidebar />
-        <div className="ml-64 p-4 flex-1">
+        <div className="  flex-1">
           <Routes>
             {/* <Route path="/" element={<Home />} /> */}
             <Route path="/createauthor" element={<CreateAuthor />} />

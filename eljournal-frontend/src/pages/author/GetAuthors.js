@@ -38,11 +38,11 @@ export default function AuthorsPage() {
             <div className="container mx-auto py-8">
                 <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
                     <div className="flex items-center justify-between p-6 bg-gray-800 rounded-t-lg">
-                        <div className="flex items-center">
-                            <FaUserTie className="text-white text-3xl mr-2" />
-                            <h1 className="text-white text-2xl font-bold">Authors Management</h1>
+                        <div className="flex items-center text-white">
+                            <FaUserTie className="text-3xl mr-2" />
+                            <h1 className="text-2xl font-bold">Authors Management</h1>
                         </div>
-                        <Link to="/createauthor" className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300">
+                        <Link to="/createauthor" className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg flex items-center shadow-md transition duration-300">
                             <FaUserTie className="mr-2" />
                             Create Author
                         </Link>
