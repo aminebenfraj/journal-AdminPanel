@@ -10,6 +10,7 @@ import EditCategory from './pages/category/EditCategory';
 import CreateSource from './pages/source/CreateSource';
 import GetSource from './pages/source/GetSource';
 import EditSource from './pages/source/EditSource';
+import DashBoard from './pages/DashBoard';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <Sidebar />
         <div className="  flex-1">
           <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
+            <Route path="/" element={<DashBoard />} />
             <Route path="/createauthor" element={<CreateAuthor />} />
             <Route path="/getauthor" element={<GetAuthors />} />
             <Route path="/editauthor/:id" element={<EditAuthor />} />

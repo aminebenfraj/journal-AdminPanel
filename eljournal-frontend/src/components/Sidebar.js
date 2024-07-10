@@ -38,16 +38,15 @@ const Sidebar = () => {
         <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
             <nav>
                 <ul className="space-y-2">
-                    {/* Sidebar sections with dropdowns */}
-                    {/* Example sections: Authors, Articles, Categories, Sources, Tags, Users */}
-                    <li className="opcion-con-desplegable">
-                        <li>
-                            <a href="/#" className="block p-2 hover:bg-gray-700 flex items-center">
-                                <FaHome className="mr-2" />
-                                Home
-                            </a>
-                        </li>
-                        {/* Authors Section */}
+                    <li key="home">
+                        <a href="/#" className="block p-2 hover:bg-gray-700 flex items-center">
+                            <FaHome className="mr-2" />
+                            DashBoard
+                        </a>
+                    </li>
+
+                    {/* Authors Section */}
+                    <li className="opcion-con-desplegable" key="authors">
                         <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('author')}>
                             <div className="flex items-center">
                                 <FaUser className="mr-2" />
@@ -57,15 +56,14 @@ const Sidebar = () => {
                             <FaChevronDown className={`text-xs ${openSections['author'] ? 'rotate-180' : ''}`} />
                         </div>
                         <ul className={`desplegable ml-4 ${openSections['author'] ? '' : 'hidden'}`}>
-                            {/* Submenu items for Authors */}
-                            <li>
+                            <li key="create-author">
                                 <a href="/createauthor" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
                                     Create Author
                                 </a>
                             </li>
-                            <li>
-                                <a href="getauthor" className="block p-2 hover:bg-gray-700 flex items-center">
+                            <li key="show-author">
+                                <a href="/getauthor" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
                                     Show Author
                                 </a>
@@ -73,10 +71,8 @@ const Sidebar = () => {
                         </ul>
                     </li>
 
-                    {/* Other sidebar sections (similar structure) */}
-                    {/* Articles, Categories, Sources, Tags, Users */}
-                    {/* Example: Articles Section */}
-                    <li className="opcion-con-desplegable">
+                    {/* Articles Section */}
+                    <li className="opcion-con-desplegable" key="articles">
                         <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('article')}>
                             <div className="flex items-center">
                                 <FaNewspaper className="mr-2" />
@@ -85,7 +81,6 @@ const Sidebar = () => {
                             <FaChevronDown className={`text-xs ${openSections['article'] ? 'rotate-180' : ''}`} />
                         </div>
                         <ul className={`desplegable ml-4 ${openSections['article'] ? '' : 'hidden'}`}>
-                            {/* Submenu items for Articles */}
                             <li>
                                 <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
@@ -102,7 +97,7 @@ const Sidebar = () => {
                     </li>
 
                     {/* Category Section */}
-                    <li className="opcion-con-desplegable">
+                    <li className="opcion-con-desplegable" key="categories">
                         <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('category')}>
                             <div className="flex items-center">
                                 <FaListAlt className="mr-2" />
@@ -111,7 +106,6 @@ const Sidebar = () => {
                             <FaChevronDown className={`text-xs ${openSections['category'] ? 'rotate-180' : ''}`} />
                         </div>
                         <ul className={`desplegable ml-4 ${openSections['category'] ? '' : 'hidden'}`}>
-                            {/* Submenu items for Categories */}
                             <li>
                                 <a href="/createcategory" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
@@ -128,7 +122,7 @@ const Sidebar = () => {
                     </li>
 
                     {/* Source Section */}
-                    <li className="opcion-con-desplegable">
+                    <li className="opcion-con-desplegable" key="sources">
                         <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('source')}>
                             <div className="flex items-center">
                                 <FaFile className="mr-2" />
@@ -137,7 +131,6 @@ const Sidebar = () => {
                             <FaChevronDown className={`text-xs ${openSections['source'] ? 'rotate-180' : ''}`} />
                         </div>
                         <ul className={`desplegable ml-4 ${openSections['source'] ? '' : 'hidden'}`}>
-                            {/* Submenu items for Sources */}
                             <li>
                                 <a href="/createsource" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
@@ -154,7 +147,7 @@ const Sidebar = () => {
                     </li>
 
                     {/* Tag Section */}
-                    <li className="opcion-con-desplegable">
+                    <li className="opcion-con-desplegable" key="tags">
                         <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('tag')}>
                             <div className="flex items-center">
                                 <FaTags className="mr-2" />
@@ -163,7 +156,6 @@ const Sidebar = () => {
                             <FaChevronDown className={`text-xs ${openSections['tag'] ? 'rotate-180' : ''}`} />
                         </div>
                         <ul className={`desplegable ml-4 ${openSections['tag'] ? '' : 'hidden'}`}>
-                            {/* Submenu items for Tags */}
                             <li>
                                 <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
@@ -180,7 +172,7 @@ const Sidebar = () => {
                     </li>
 
                     {/* User Section */}
-                    <li className="opcion-con-desplegable">
+                    <li className="opcion-con-desplegable" key="users">
                         <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('user')}>
                             <div className="flex items-center">
                                 <FaUser className="mr-2" />
@@ -189,7 +181,6 @@ const Sidebar = () => {
                             <FaChevronDown className={`text-xs ${openSections['user'] ? 'rotate-180' : ''}`} />
                         </div>
                         <ul className={`desplegable ml-4 ${openSections['user'] ? '' : 'hidden'}`}>
-                            {/* Submenu items for Users */}
                             <li>
                                 <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
@@ -205,17 +196,16 @@ const Sidebar = () => {
                         </ul>
                     </li>
 
-                    {/* Logout and Settings Section */}
-                    <li className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer">
-                        {/* Settings */}
-
+                    {/* Settings */}
+                    <li className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" key="settings">
                         <div className="flex items-center">
                             <FaCog className="mr-2" />
                             <span>Settings</span>
                         </div>
                     </li>
+
                     {/* Logout */}
-                    <li className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer">
+                    <li className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" key="logout">
                         <div className="flex items-center">
                             <FaSignOutAlt className="mr-2" />
                             <span>Logout</span>
