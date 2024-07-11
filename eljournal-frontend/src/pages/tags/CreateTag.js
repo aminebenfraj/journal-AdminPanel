@@ -1,0 +1,57 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { baseURL } from '../../utils/constant';
+
+export default function CreateTag() {
+    const navigate = useNavigate();
+    const [tagForm, setTagForm] = useState({ name: '' });
+
+    const handleChange = (e) => {
+        setTagForm({ ...tagForm, [e.target.name]: e.target.value });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            if (!tagForm.name) {
+                console.error("Please fill in the name field.");
+                return;
+            }
+
+            const response = await axios.post(`${baseURL}/tags`, { ...tagForm });
+            console.log("Tag added successfully:", response.data);
+            navigate('/gettag');
+        } catch (error) {
+            console.error("Error adding tag:", error);
+        }
+    }
+
+    return (
+        <div className="flex items-start pt-28 justify-center h-screen bg-gray-900">
+            <div className="max-w-2xl w-full bg-gray-800 border border-transparent rounded-lg shadow-lg shadow-gray-800 p-8">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="name" className="text-gray-400 font-semibold text-sm">Name:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={tagForm.name}
+                            onChange={handleChange}
+                            required
+                            className="px-4 py-2 bg-transparent border border-gray-600 rounded-lg text-white focus:outline-none focus:border-purple-500 placeholder-opacity-50"
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        className="flex items-center justify-center self-start font-semibold text-gray-400 bg-gray-800 border border-gray-600 px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-white hover:text-gray-800"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+}

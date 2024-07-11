@@ -11,6 +11,9 @@ import CreateSource from './pages/source/CreateSource';
 import GetSource from './pages/source/GetSource';
 import EditSource from './pages/source/EditSource';
 import DashBoard from './pages/DashBoard';
+import CreateTag from './pages/tags/CreateTag';
+import EditTag from './pages/tags/EditTag';
+import GetTag from './pages/tags/GetTag';
 
 
 function App() {
@@ -30,7 +33,9 @@ function App() {
             <Route path="/createsource" element={<CreateSource />} />
             <Route path="/getSource" element={<GetSource />} />
             <Route path="/editSource/:id" element={<EditSource />} />
-
+            <Route path="/createtag" element={<CreateTag />} />
+            <Route path="/edittag/:id" element={<EditTag />} />
+             <Route path="/gettag" element={<GetTag />} />
 
           </Routes>
         </div>
