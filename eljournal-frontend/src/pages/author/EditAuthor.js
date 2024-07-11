@@ -51,7 +51,7 @@ export default function EditAuthor() {
                         </div>
                     </div>
                     <div className="p-6">
-                        <form className="grid grid-cols-1 gap-6 max-w-lg min-w-[400px] mx-auto bg-white p-8 rounded-xl shadow-lg" onSubmit={handleSubmit}>
+                        <form className="grid grid-cols-1 gap-6 max-w-lg min-w-[400px] mx-auto bg-white p-8 rounded-xl border border-gray-300" onSubmit={handleSubmit}>
                             <div className="flex items-center border-b-2 border-gray-200 py-2">
                                 <FaUser className="text-yellow-600 mr-2" />
                                 <input
@@ -63,8 +63,8 @@ export default function EditAuthor() {
                                 />
                             </div>
 
-                            <div className="flex items-center border-b-2 border-gray-200 py-2">
-                                <FaEdit className="text-green-600 mr-2" />
+                            <div className="flex items-start border-b-2 border-gray-200 py-2">
+                                <FaEdit className="text-green-600 mr-2 mt-1" />
                                 <textarea
                                     className="w-full border-none focus:outline-none"
                                     placeholder="Author Biography"
@@ -76,7 +76,7 @@ export default function EditAuthor() {
                             </div>
 
                             <button
-                                className="flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300"
+                                className="flex items-center justify-center bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300"
                                 type="submit"
                             >
                                 <FaEdit className="mr-2" /> Update Author

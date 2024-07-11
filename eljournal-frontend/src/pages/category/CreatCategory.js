@@ -29,8 +29,8 @@ export default function CreateCategory() {
     }
 
     return (
-        <div className="flex items-center justify-center h-screen">
-            <div className="max-w-2xl w-full bg-gradient-to-r from-gray-900 via-gray-900 to-gray-900 border border-transparent rounded-lg shadow-lg p-8">
+        <div className="flex items-start pt-28 justify-center h-screen bg-gray-900">
+            <div className="max-w-2xl w-full bg-gray-800 border border-transparent rounded-lg shadow-lg shadow-gray-800 p-8">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div className="flex flex-col gap-1">
                         <label htmlFor="name" className="text-gray-400 font-semibold text-sm">Name:</label>
