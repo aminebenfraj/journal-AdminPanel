@@ -82,13 +82,13 @@ const Sidebar = () => {
                         </div>
                         <ul className={`desplegable ml-4 ${openSections['article'] ? '' : 'hidden'}`}>
                             <li>
-                                <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
+                                <a href="/createarticle" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
                                     Create Article
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
+                                <a href="/getarticle" className="block p-2 hover:bg-gray-700 flex items-center">
                                     <FaChevronRight className="mr-2 text-xs" />
                                     Show Article
                                 </a>

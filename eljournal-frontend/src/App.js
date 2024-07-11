@@ -14,6 +14,10 @@ import DashBoard from './pages/DashBoard';
 import CreateTag from './pages/tags/CreateTag';
 import EditTag from './pages/tags/EditTag';
 import GetTag from './pages/tags/GetTag';
+import CreateArticle from './pages/article/CreateArticle';
+import EditArticle from './pages/article/EditArticle';
+import GetArticle from './pages/article/GetArticle';
+
 
 
 function App() {
@@ -35,8 +39,10 @@ function App() {
             <Route path="/editSource/:id" element={<EditSource />} />
             <Route path="/createtag" element={<CreateTag />} />
             <Route path="/edittag/:id" element={<EditTag />} />
-             <Route path="/gettag" element={<GetTag />} />
-
+            <Route path="/gettag" element={<GetTag />} />
+            <Route path="/createarticle" element={<CreateArticle />} />
+            <Route path="/editarticle/:id" element={<EditArticle />} />
+            <Route path="/getarticle" element={<GetArticle />} />
           </Routes>
         </div>
       </div>

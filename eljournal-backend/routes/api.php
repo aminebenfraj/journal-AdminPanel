@@ -26,3 +26,4 @@ Route::apiResource('authors', AuthorController::class);
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('sources', SourceController::class);
 Route::apiResource('tags', TagController::class);
+Route::apiResource('articles', ArticleController::class);
