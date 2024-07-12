@@ -19,6 +19,8 @@ import EditArticle from './pages/article/EditArticle';
 import GetArticle from './pages/article/GetArticle';
 import Login from './pages/auth/Login.js'
 import Register from './pages/auth/Register.js';
+import DisplayPage from './pages/DisplayPage.js';
+import InputPage from './pages/InputPage.js';
 function App() {
   return (
     <BrowserRouter>
@@ -55,6 +57,9 @@ function AppContent() {
           <Route path="/getarticle" element={<GetArticle />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/display" element={<DisplayPage />} />
+          <Route path="/input" element={<InputPage />} />
+
         </Routes>
       </div>
     </div>
