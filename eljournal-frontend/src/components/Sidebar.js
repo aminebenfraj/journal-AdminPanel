@@ -1,3 +1,5 @@
+// src/components/Sidebar.js
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaUser, FaHome, FaCog, FaSignOutAlt, FaNewspaper, FaListAlt, FaFile, FaTags, FaChevronDown, FaChevronRight } from 'react-icons/fa';
@@ -13,6 +15,7 @@ const Sidebar = () => {
         user: false,
     });
     const [authorCount, setAuthorCount] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         const fetchAuthors = async () => {
@@ -35,198 +38,209 @@ const Sidebar = () => {
     };
 
     return (
-        <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
-            <nav>
-                <ul className="space-y-2">
-                    <li key="home">
-                        <a href="/#" className="block p-2 hover:bg-gray-700 flex items-center">
-                            <FaHome className="mr-2" />
-                            DashBoard
-                        </a>
-                    </li>
+        <div>
+            <div
+                className="fixed top-0 left-0 w-10 h-full z-50"
+                onMouseEnter={() => setIsVisible(true)}
+                onMouseLeave={() => setIsVisible(false)}
+            ></div>
+            <aside
+                className={`fixed top-0 left-0 bg-gray-800 text-white w-64 h-full p-4 transition-transform transform ${isVisible ? 'translate-x-0' : '-translate-x-full'
+                    }`}
+                onMouseEnter={() => setIsVisible(true)}
+                onMouseLeave={() => setIsVisible(false)}
+            >
+                <nav>
+                    <ul className="space-y-2">
+                        <li key="home">
+                            <a href="/#" className="block p-2 hover:bg-gray-700 flex items-center">
+                                <FaHome className="mr-2" />
+                                DashBoard
+                            </a>
+                        </li>
 
-                    {/* Authors Section */}
-                    <li className="opcion-con-desplegable" key="authors">
-                        <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('author')}>
-                            <div className="flex items-center">
-                                <FaUser className="mr-2" />
-                                <span>Authors</span>
-                                <span className="ml-1 text-sm text-gray-400">({authorCount})</span>
+                        {/* Authors Section */}
+                        <li className="opcion-con-desplegable" key="authors">
+                            <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('author')}>
+                                <div className="flex items-center">
+                                    <FaUser className="mr-2" />
+                                    <span>Authors</span>
+                                    <span className="ml-1 text-sm text-gray-400">({authorCount})</span>
+                                </div>
+                                <FaChevronDown className={`text-xs ${openSections['author'] ? 'rotate-180' : ''}`} />
                             </div>
-                            <FaChevronDown className={`text-xs ${openSections['author'] ? 'rotate-180' : ''}`} />
-                        </div>
-                        <ul className={`desplegable ml-4 ${openSections['author'] ? '' : 'hidden'}`}>
-                            <li key="create-author">
-                                <a href="/createauthor" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Create Author
-                                </a>
-                            </li>
-                            <li key="show-author">
-                                <a href="/getauthor" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Show Author
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                            <ul className={`desplegable ml-4 ${openSections['author'] ? '' : 'hidden'}`}>
+                                <li key="create-author">
+                                    <a href="/createauthor" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Create Author
+                                    </a>
+                                </li>
+                                <li key="show-author">
+                                    <a href="/getauthor" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Show Author
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    {/* Articles Section */}
-                    <li className="opcion-con-desplegable" key="articles">
-                        <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('article')}>
-                            <div className="flex items-center">
-                                <FaNewspaper className="mr-2" />
-                                <span>Articles</span>
+                        {/* Articles Section */}
+                        <li className="opcion-con-desplegable" key="articles">
+                            <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('article')}>
+                                <div className="flex items-center">
+                                    <FaNewspaper className="mr-2" />
+                                    <span>Articles</span>
+                                </div>
+                                <FaChevronDown className={`text-xs ${openSections['article'] ? 'rotate-180' : ''}`} />
                             </div>
-                            <FaChevronDown className={`text-xs ${openSections['article'] ? 'rotate-180' : ''}`} />
-                        </div>
-                        <ul className={`desplegable ml-4 ${openSections['article'] ? '' : 'hidden'}`}>
-                            <li>
-                                <a href="/createarticle" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Create Article
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/getarticle" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Show Article
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                            <ul className={`desplegable ml-4 ${openSections['article'] ? '' : 'hidden'}`}>
+                                <li>
+                                    <a href="/createarticle" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Create Article
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/getarticle" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Show Article
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    {/* Category Section */}
-                    <li className="opcion-con-desplegable" key="categories">
-                        <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('category')}>
-                            <div className="flex items-center">
-                                <FaListAlt className="mr-2" />
-                                <span>Categories</span>
+                        {/* Category Section */}
+                        <li className="opcion-con-desplegable" key="categories">
+                            <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('category')}>
+                                <div className="flex items-center">
+                                    <FaListAlt className="mr-2" />
+                                    <span>Categories</span>
+                                </div>
+                                <FaChevronDown className={`text-xs ${openSections['category'] ? 'rotate-180' : ''}`} />
                             </div>
-                            <FaChevronDown className={`text-xs ${openSections['category'] ? 'rotate-180' : ''}`} />
-                        </div>
-                        <ul className={`desplegable ml-4 ${openSections['category'] ? '' : 'hidden'}`}>
-                            <li>
-                                <a href="/createcategory" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Create Category
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/getcategory" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Show Category
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                            <ul className={`desplegable ml-4 ${openSections['category'] ? '' : 'hidden'}`}>
+                                <li>
+                                    <a href="/createcategory" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Create Category
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/getcategory" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Show Category
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    {/* Source Section */}
-                    <li className="opcion-con-desplegable" key="sources">
-                        <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('source')}>
-                            <div className="flex items-center">
-                                <FaFile className="mr-2" />
-                                <span>Sources</span>
+                        {/* Source Section */}
+                        <li className="opcion-con-desplegable" key="sources">
+                            <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('source')}>
+                                <div className="flex items-center">
+                                    <FaFile className="mr-2" />
+                                    <span>Sources</span>
+                                </div>
+                                <FaChevronDown className={`text-xs ${openSections['source'] ? 'rotate-180' : ''}`} />
                             </div>
-                            <FaChevronDown className={`text-xs ${openSections['source'] ? 'rotate-180' : ''}`} />
-                        </div>
-                        <ul className={`desplegable ml-4 ${openSections['source'] ? '' : 'hidden'}`}>
-                            <li>
-                                <a href="/createsource" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Create Source
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/getsource" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Show Source
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/news" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    News
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/input" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    input
-                                </a>
-                            </li>
+                            <ul className={`desplegable ml-4 ${openSections['source'] ? '' : 'hidden'}`}>
+                                <li>
+                                    <a href="/createsource" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Create Source
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/getsource" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Show Source
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/news" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        News
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/input" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Input
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                        </ul>
-                    </li>
-
-                    {/* Tag Section */}
-                    <li className="opcion-con-desplegable" key="tags">
-                        <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('tag')}>
-                            <div className="flex items-center">
-                                <FaTags className="mr-2" />
-                                <span>Tags</span>
+                        {/* Tag Section */}
+                        <li className="opcion-con-desplegable" key="tags">
+                            <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('tag')}>
+                                <div className="flex items-center">
+                                    <FaTags className="mr-2" />
+                                    <span>Tags</span>
+                                </div>
+                                <FaChevronDown className={`text-xs ${openSections['tag'] ? 'rotate-180' : ''}`} />
                             </div>
-                            <FaChevronDown className={`text-xs ${openSections['tag'] ? 'rotate-180' : ''}`} />
-                        </div>
-                        <ul className={`desplegable ml-4 ${openSections['tag'] ? '' : 'hidden'}`}>
-                            <li>
-                                <a href="/createtag" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Create Tag
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/gettag" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Show Tag
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                            <ul className={`desplegable ml-4 ${openSections['tag'] ? '' : 'hidden'}`}>
+                                <li>
+                                    <a href="/createtag" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Create Tag
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/gettag" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Show Tag
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    {/* User Section */}
-                    <li className="opcion-con-desplegable" key="users">
-                        <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('user')}>
-                            <div className="flex items-center">
-                                <FaUser className="mr-2" />
-                                <span>Users</span>
+                        {/* User Section */}
+                        <li className="opcion-con-desplegable" key="users">
+                            <div className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" onClick={() => toggleSection('user')}>
+                                <div className="flex items-center">
+                                    <FaUser className="mr-2" />
+                                    <span>Users</span>
+                                </div>
+                                <FaChevronDown className={`text-xs ${openSections['user'] ? 'rotate-180' : ''}`} />
                             </div>
-                            <FaChevronDown className={`text-xs ${openSections['user'] ? 'rotate-180' : ''}`} />
-                        </div>
-                        <ul className={`desplegable ml-4 ${openSections['user'] ? '' : 'hidden'}`}>
-                            <li>
-                                <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Create User
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
-                                    <FaChevronRight className="mr-2 text-xs" />
-                                    Show User
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                            <ul className={`desplegable ml-4 ${openSections['user'] ? '' : 'hidden'}`}>
+                                <li>
+                                    <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Create User
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" className="block p-2 hover:bg-gray-700 flex items-center">
+                                        <FaChevronRight className="mr-2 text-xs" />
+                                        Show User
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    {/* Settings */}
-                    <li className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" key="settings">
-                        <div className="flex items-center">
-                            <FaCog className="mr-2" />
-                            <span>Settings</span>
-                        </div>
-                    </li>
+                        {/* Settings */}
+                        <li className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" key="settings">
+                            <div className="flex items-center">
+                                <FaCog className="mr-2" />
+                                <span>Settings</span>
+                            </div>
+                        </li>
 
-                    {/* Logout */}
-                    <li className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" key="logout">
-                        <div className="flex items-center">
-                            <FaSignOutAlt className="mr-2" />
-                            <span>Logout</span>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+                        {/* Logout */}
+                        <li className="flex items-center justify-between p-2 hover:bg-gray-700 cursor-pointer" key="logout">
+                            <div className="flex items-center">
+                                <FaSignOutAlt className="mr-2" />
+                                <span>Logout</span>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
     );
 };
 
