@@ -1,4 +1,4 @@
-// GetSource.js
+// src/pages/GetSource.js
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -26,7 +26,6 @@ export default function GetSource() {
     const handleDelete = async (id) => {
         try {
             await axios.delete(`${baseURL}/sources/${id}`);
-            // After deleting, fetch updated list of sources
             const response = await axios.get(`${baseURL}/sources`);
             setSources(response.data);
         } catch (error) {
@@ -49,13 +48,13 @@ export default function GetSource() {
                         </Link>
                     </div>
                     <div className="p-6">
-                        <table className="w-full table-auto">
+                        <table className="w-full table-auto border-collapse">
                             <thead className="bg-gray-200">
                                 <tr>
                                     <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">ID</th>
                                     <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Name</th>
                                     <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">URL</th>
-                                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">RSS Feed URL</th>
+                                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 max-w-xs truncate">RSS Feed URL</th>
                                     <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Actions</th>
                                 </tr>
                             </thead>
@@ -65,7 +64,7 @@ export default function GetSource() {
                                         <td className="px-4 py-2">{source.id}</td>
                                         <td className="px-4 py-2">{source.name}</td>
                                         <td className="px-4 py-2">{source.url}</td>
-                                        <td className="px-4 py-2">{source.rss_feed_url}</td>
+                                        <td className="px-4 py-2 truncate" style={{ maxWidth: '8rem' }}>{source.rss_feed_url}</td>
                                         <td className="px-4 py-2">
                                             <Link
                                                 to={`/sources/${source.id}`}

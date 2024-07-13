@@ -24,7 +24,7 @@ export default function CreateSource() {
 
             const response = await axios.post(`${baseURL}/sources`, { ...sourceForm });
             console.log("Source added successfully:", response.data);
-            navigate('/getsources');
+            navigate('/news');
         } catch (error) {
             console.error("Error adding source:", error);
         }

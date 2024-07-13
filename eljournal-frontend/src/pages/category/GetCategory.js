@@ -65,12 +65,6 @@ export default function GetCategory() {
                                         <td className="px-4 py-2">{category.name}</td>
                                         <td className="px-4 py-2">{category.description}</td>
                                         <td className="px-4 py-2">
-                                            <Link
-                                                to={`/categories/${category.id}`}
-                                                className="text-blue-600 hover:text-blue-800 font-medium mr-4"
-                                            >
-                                                View
-                                            </Link>
                                             <button
                                                 onClick={() => handleDelete(category.id)}
                                                 className="text-red-600 hover:text-red-800 font-medium mr-4"

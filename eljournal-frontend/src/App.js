@@ -22,6 +22,7 @@ import Register from './pages/auth/Register.js';
 import DisplayPage from './pages/DisplayPage.js';
 import InputPage from './pages/InputPage.js';
 import News from './pages/source/News.js';
+import ViewNews from './pages/source/ViewNews.js';
 function App() {
   return (
     <BrowserRouter>
@@ -61,7 +62,7 @@ function AppContent() {
           <Route path="/display" element={<DisplayPage />} />
           <Route path="/input" element={<InputPage />} />
           <Route path="/news" element={<News />} />
-
+          <Route path="/sources/:id" element={<ViewNews />} />
         </Routes>
       </div>
     </div>

@@ -143,6 +143,19 @@ const Sidebar = () => {
                                     Show Source
                                 </a>
                             </li>
+                            <li>
+                                <a href="/news" className="block p-2 hover:bg-gray-700 flex items-center">
+                                    <FaChevronRight className="mr-2 text-xs" />
+                                    News
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/input" className="block p-2 hover:bg-gray-700 flex items-center">
+                                    <FaChevronRight className="mr-2 text-xs" />
+                                    input
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
 
